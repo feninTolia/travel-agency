@@ -52,7 +52,6 @@ const Home = ({ loaderData: user }: Route.ComponentProps) => {
               </Link>
             )}
           </section>
-
           <section className="wrapper py-36 flex-col gap-8">
             <h1 className="text-6xl font-bold w-2/5 text-dark-100 text-dark-400">
               Plan Your Trip with Ease

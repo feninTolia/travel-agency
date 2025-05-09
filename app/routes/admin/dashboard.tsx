@@ -17,21 +17,21 @@ const Dashboard = ({ loaderData: user }: Route.ComponentProps) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full ">
           <StatsCard
             headerTitle="Total Users"
-            total={dashboardsStats.totalUsers}
-            currentMonthCount={dashboardsStats.usersJoined.currentMonth}
-            lastMonthCount={dashboardsStats.usersJoined.lastMonth}
+            total={dashboardsStats?.totalUsers}
+            currentMonthCount={dashboardsStats?.usersJoined.currentMonth}
+            lastMonthCount={dashboardsStats?.usersJoined.lastMonth}
           />
           <StatsCard
             headerTitle="Total Trips"
-            total={dashboardsStats.totalTrips}
-            currentMonthCount={dashboardsStats.tripsCreated.currentMonth}
-            lastMonthCount={dashboardsStats.tripsCreated.lastMonth}
+            total={dashboardsStats?.totalTrips}
+            currentMonthCount={dashboardsStats?.tripsCreated.currentMonth}
+            lastMonthCount={dashboardsStats?.tripsCreated.lastMonth}
           />
           <StatsCard
             headerTitle="Active Users Today"
-            total={dashboardsStats.userRole.total}
-            currentMonthCount={dashboardsStats.userRole.currentMonth}
-            lastMonthCount={dashboardsStats.userRole.lastMonth}
+            total={dashboardsStats?.userRole.total}
+            currentMonthCount={dashboardsStats?.userRole.currentMonth}
+            lastMonthCount={dashboardsStats?.userRole.lastMonth}
           />
         </div>
       </section>
@@ -45,7 +45,7 @@ const Dashboard = ({ loaderData: user }: Route.ComponentProps) => {
                 key={id}
                 name={name}
                 id={id.toString()}
-                imageUrl={imageUrls[0]}
+                imageUrl={imageUrls?.[0]}
                 location={itinerary?.[0]?.location ?? ''}
                 tags={tags}
                 price={estimatedPrice}
