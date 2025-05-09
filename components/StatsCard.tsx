@@ -23,7 +23,7 @@ const StatsCard = ({
           <div className="flex items-center gap-2">
             <figure className="flex items-center gap-1">
               <img
-                src={`/public/assets/icons/${
+                src={`/assets/icons/${
                   isDecrement ? 'arrow-down-red.svg' : 'arrow-up-green.svg'
                 }`}
                 className="size-5"
@@ -45,7 +45,7 @@ const StatsCard = ({
         </div>
 
         <img
-          src={`/public/assets/icons/${
+          src={`/assets/icons/${
             isDecrement ? 'decrement.svg' : 'increment.svg'
           }`}
           alt="trend graph"

@@ -7,7 +7,7 @@ import { useRef } from 'react';
 const MobileSidebar = () => {
   const sidebar = useRef<SidebarComponent>(null);
 
-  const toggleSidebar = () => sidebar.current?.toggle();
+  const toggleSidebar = () => sidebar?.current?.toggle();
 
   return (
     <div className="mobile-sidebar wrapper">
@@ -19,7 +19,7 @@ const MobileSidebar = () => {
 
         <button onClick={toggleSidebar}>
           <img
-            src="/public/assets/icons/menu.svg"
+            src="/assets/icons/menu.svg"
             alt="menu"
             className="size-7 cursor-pointer"
           />
@@ -28,7 +28,7 @@ const MobileSidebar = () => {
       <SidebarComponent
         ref={sidebar}
         width="270px"
-        created={() => sidebar.current?.hide()}
+        created={() => sidebar?.current?.hide()}
         closeOnDocumentClick={true}
         showBackdrop={true}
         type="over"

@@ -1,9 +1,19 @@
 import { Header } from 'components';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { getUser, logoutUser } from '~/appwrite/auth';
+import type { Route } from './+types';
 
-type Props = {};
+export const clientLoader = async () => getUser();
 
-const Home = (props: Props) => {
+const Home = ({ loaderData: user }: Route.ComponentProps) => {
+  const navigate = useNavigate();
+  console.log('user', user);
+
+  const handleLogout = async () => {
+    await logoutUser();
+    await navigate('/');
+  };
+
   return (
     <main>
       <div className="travel-hero">
@@ -17,13 +27,30 @@ const Home = (props: Props) => {
               />
               <h1>Tourvisto</h1>
             </Link>
-
-            <Link
-              className="rounded-lg py-3 px-3.5  bg-primary-100 text-white w-fit hover:bg-primary-500 transition-all"
-              to={'/dashboard'}
-            >
-              Dashboard
-            </Link>
+            {user?.accountId ? (
+              <div className="flex flex-row bg-none gap-4">
+                <Link
+                  className="rounded-lg py-3 px-3.5  bg-primary-100 text-white w-fit hover:bg-primary-500 transition-all"
+                  to={'/dashboard'}
+                >
+                  Dashboard
+                </Link>
+                <button onClick={handleLogout} className="cursor-pointer">
+                  <img
+                    src="/assets/icons/logout.svg"
+                    alt="logout"
+                    className="size-6 hover:brightness-8 0"
+                  />
+                </button>
+              </div>
+            ) : (
+              <Link
+                className="rounded-lg py-3 px-3.5  bg-primary-100 text-white w-fit hover:bg-primary-500 transition-all"
+                to={'/sign-in'}
+              >
+                Sign In
+              </Link>
+            )}
           </section>
 
           <section className="wrapper py-36 flex-col gap-8">
