@@ -1,42 +1,63 @@
-// @ts-nocheck //TODO: SidebarComponent props types
-import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { Link } from 'react-router';
 import NavItems from './NavItems';
-import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const MobileSidebar = () => {
-  const sidebar = useRef<SidebarComponent>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  console.log('isSidebarOpen', isSidebarOpen);
 
-  const toggleSidebar = () => sidebar?.current?.toggle();
+  const toggleSidebar = () => {
+    console.log('click');
+
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isSidebarOpen]);
 
   return (
     <div className="mobile-sidebar wrapper">
       <header>
         <Link to="/">
-          <img src="/assets/icons/logo.svg" alt="logo" className="size-7.5" />
+          <img
+            src="/assets/icons/logo.svg"
+            alt="Logo"
+            className="size-[30px]"
+          />
+
           <h1>Tourvisto</h1>
         </Link>
 
         <button onClick={toggleSidebar}>
-          <img
-            src="/assets/icons/menu.svg"
-            alt="menu"
-            className="size-7 cursor-pointer"
-          />
+          <img src="/assets/icons/menu.svg" alt="menu" className="size-7" />
         </button>
       </header>
-      <SidebarComponent
-        ref={sidebar}
-        width="270px"
-        created={() => sidebar?.current?.hide()}
-        closeOnDocumentClick={true}
-        showBackdrop={true}
-        type="over"
-      >
-        <NavItems handleClick={toggleSidebar} />
-      </SidebarComponent>
+
+      {isSidebarOpen && (
+        <>
+          <dialog
+            open={isSidebarOpen}
+            className=" z-20 h-screen overflow-hidden"
+          >
+            <NavItems handleClick={toggleSidebar} />
+          </dialog>
+          <button
+            onClick={toggleSidebar}
+            className={`${
+              isSidebarOpen ? 'bg-gray-100/50' : 'bg-none'
+            } absolute z-10 inset-0`}
+          />
+        </>
+      )}
     </div>
   );
 };
-
 export default MobileSidebar;

@@ -296,7 +296,7 @@
     }
   }
   .mobile-sidebar {
-    @apply lg:hidden flex flex-col gap-5;
+    @apply flex flex-col gap-5 lg:hidden;
     header {
       @apply flex justify-between items-center border-b border-light-100;
       h1 {
@@ -478,6 +478,10 @@ body {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 /* ======== css overrides for syncfusion ========= */

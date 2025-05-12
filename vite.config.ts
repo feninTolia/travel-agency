@@ -18,12 +18,12 @@ const sentryConfig: SentryReactRouterBuildOptions = {
 export default defineConfig((config) => {
   return {
     plugins: [
-      tailwindcss(),
       tsconfigPaths(),
       reactRouter(),
       sentryReactRouter(sentryConfig, config),
+      tailwindcss(),
     ],
-    sentryConfig,
+    // sentryConfig,
     ssr: { noExternal: [/@syncfusion/] },
   };
 });
