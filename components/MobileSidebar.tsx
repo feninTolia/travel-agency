@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 
 const MobileSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  console.log('isSidebarOpen', isSidebarOpen);
 
   const toggleSidebar = () => {
     console.log('click');
