@@ -6,8 +6,6 @@ const MobileSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    console.log('click');
-
     setIsSidebarOpen(!isSidebarOpen);
   };
 

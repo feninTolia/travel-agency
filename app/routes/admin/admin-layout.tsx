@@ -33,7 +33,7 @@ const AdminLayout = () => {
       <aside className="w-full max-w-[270px] hidden lg:block">
         <NavItems />
       </aside>
-      <aside className="children">
+      <aside className="children overflow-scroll">
         <Outlet />
       </aside>
     </div>
