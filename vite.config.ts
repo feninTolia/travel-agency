@@ -23,7 +23,7 @@ export default defineConfig((config) => {
       sentryReactRouter(sentryConfig, config),
       tailwindcss(),
     ],
-    // sentryConfig,
+    sentryConfig,
     ssr: { noExternal: [/@syncfusion/] },
   };
 });
