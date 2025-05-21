@@ -2,8 +2,12 @@ import { Header } from 'components';
 import { Link, useNavigate } from 'react-router';
 import { getUser, logoutUser } from '~/appwrite/auth';
 import type { Route } from './+types';
+import { account } from '~/appwrite/client';
 
-export const clientLoader = async () => getUser();
+export const clientLoader = async () => {
+  return await getUser();
+  // return await account.get();
+};
 
 const Home = ({ loaderData: user }: Route.ComponentProps) => {
   const navigate = useNavigate();
