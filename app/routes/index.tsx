@@ -2,11 +2,9 @@ import { Header } from 'components';
 import { Link, useNavigate } from 'react-router';
 import { getUser, logoutUser } from '~/appwrite/auth';
 import type { Route } from './+types';
-import { account } from '~/appwrite/client';
 
 export const clientLoader = async () => {
   return await getUser();
-  // return await account.get();
 };
 
 const Home = ({ loaderData: user }: Route.ComponentProps) => {
@@ -76,7 +74,7 @@ const Home = ({ loaderData: user }: Route.ComponentProps) => {
 
       <div className="wrapper pt-12">
         <Header
-          title="Featured Travel Destinations"
+          title="Go to dashboard"
           description="Customize your travel itinerary in minutes - pick your destination, set your preferences and explore with confidence"
         />
       </div>
