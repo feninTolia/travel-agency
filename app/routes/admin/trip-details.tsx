@@ -133,7 +133,7 @@ const TripDetails = ({ loaderData }: Route.ComponentProps) => {
               .map((_, idx) => (
                 <li key={idx}>
                   <img
-                    src="/public/assets/icons/star.svg"
+                    src="/assets/icons/star.svg"
                     alt="star"
                     className="size-[18px]"
                   />
